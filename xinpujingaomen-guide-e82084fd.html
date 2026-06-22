@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>再次收藏 · 澳门新葡京 · 轻访笔记</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #f8f6f2;
+      font-family: 'SF Pro Display', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      color: #1e1e1e;
+      line-height: 1.7;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 4rem;
+      width: 100%;
+      flex: 1;
+    }
+    /* 文章头部 */
+    .post-header {
+      margin-bottom: 2.8rem;
+      border-bottom: 1px solid #d9d4ca;
+      padding-bottom: 1.8rem;
+    }
+    .post-header .label {
+      display: inline-block;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #9b927f;
+      margin-bottom: 0.75rem;
+      font-weight: 400;
+    }
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      color: #242018;
+      margin-bottom: 0.8rem;
+    }
+    .lead {
+      font-size: 1.1rem;
+      color: #5e5847;
+      line-height: 1.6;
+      margin-top: 0.3rem;
+      font-weight: 380;
+    }
+    /* 正文排版 */
+    .post-body {
+      font-size: 1rem;
+      color: #2b2720;
+    }
+    .post-body p {
+      margin-bottom: 1.4rem;
+    }
+    .post-body .highlight {
+      background: #efebe3;
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      font-style: normal;
+    }
+    .post-body blockquote {
+      margin: 1.8rem 0 2rem;
+      padding: 1.2rem 1.5rem;
+      background: #ece8df;
+      border-left: 4px solid #baa98a;
+      color: #3d362b;
+      font-style: normal;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.98rem;
+    }
+    .post-body blockquote strong {
+      color: #2a241a;
+      font-weight: 550;
+    }
+    /* 收藏访问提示 */
+    .bookmark-note {
+      background: #ffffffd9;
+      backdrop-filter: blur(2px);
+      border: 1px solid #d5cec0;
+      border-radius: 16px;
+      padding: 1.6rem 1.8rem;
+      margin: 2rem 0 1.8rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+    .bookmark-note p {
+      margin-bottom: 0.6rem;
+    }
+    .bookmark-note .visit-hint {
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: #2f2a1f;
+    }
+    .bookmark-note .visit-hint a {
+      color: #6b5f44;
+      text-decoration: none;
+      border-bottom: 1.5px solid #cbbca3;
+      transition: border 0.2s, color 0.2s;
+      font-weight: 500;
+    }
+    .bookmark-note .visit-hint a:hover {
+      color: #2d2617;
+      border-bottom-color: #6b5f44;
+    }
+    .bookmark-note .meta-sub {
+      display: block;
+      font-size: 0.85rem;
+      color: #877f6b;
+      margin-top: 0.5rem;
+      letter-spacing: 0.02em;
+    }
+    /* 分隔 / 引用句 */
+    .separator-quote {
+      text-align: center;
+      margin: 2rem 0 1.8rem;
+      font-size: 0.95rem;
+      color: #716953;
+      border-top: 1px solid #d9d2c4;
+      padding-top: 1.6rem;
+      letter-spacing: 0.02em;
+      font-style: italic;
+    }
+    .separator-quote span {
+      background: #f8f6f2;
+      padding: 0 0.5rem;
+    }
+    /* 特点摘要 (精简) */
+    .feature-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 1.8rem 0 0.8rem;
+    }
+    .feature-item {
+      background: #f0ece3;
+      border-radius: 40px;
+      padding: 0.3rem 1.2rem;
+      font-size: 0.9rem;
+      color: #3f392b;
+      letter-spacing: 0.02em;
+    }
+    /* 底部 */
+    .post-footer {
+      margin-top: 2.6rem;
+      font-size: 0.85rem;
+      color: #958d79;
+      border-top: 1px solid #ddd6c8;
+      padding-top: 1.6rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .footer-note {
+      font-style: normal;
+    }
+    .footer-note a {
+      color: #6b614b;
+      text-decoration: none;
+      border-bottom: 1px dotted #b7ae98;
+    }
+    .footer-note a:hover {
+      border-bottom-style: solid;
+      color: #2f291b;
+    }
+    @media (max-width: 500px) {
+      .container { padding: 2rem 1.2rem 3rem; }
+      h1 { font-size: 1.8rem; }
+      .lead { font-size: 1rem; }
+      .bookmark-note { padding: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <article>
+    <div class="post-header">
+      <span class="label">· 随笔 · 轻收藏</span>
+      <h1>再访笔记：澳门新葡京</h1>
+      <div class="lead">有些页面值得放回书签栏里，偶尔路过，顺手打开。</div>
+    </div>
+
+    <div class="post-body">
+      <p>
+        说起来也奇怪，明明已经收藏过，但再次打开 <a href="https://xinpujingaomen.com" style="color: #6b5f44; text-decoration: none; border-bottom: 1.5px solid #cbbca3; font-weight: 500;">澳门新葡京</a> 的时候，
+        还是会有一种「总算又到了」的踏实感。浏览器的书签栏里塞了不少网址，可每隔一段时间总会点进去的，其实就那几个。
+        这一次，我特意把页面重新整理到常用文件夹里，顺手改了标签名，免得下次再翻半天。
+      </p>
+      <p>
+        很多人习惯把常看的页面丢在地址栏下拉列表里，但我更喜欢手动收藏——就像在书架上给某本书留一个固定位置。
+        对 <span class="highlight">澳门新葡京</span> 来说，收藏的动作本身就像一次安静的确认：你知道它在那里，内容稳定，也愿意持续更新。
+      </p>
+
+      <blockquote>
+        <strong>一条提醒：</strong> 如果隔了一段时间没有回来，不妨看看页面的信息是否还是你熟悉的样子。
+        收藏夹里的链接偶尔会失效，但好在 <strong>澳门新葡京</strong> 一直保持在线，风格也延续着。
+      </blockquote>
+
+      <p>
+        前阵子整理浏览器标签页，才发现自己不知不觉收藏了十几个同类站点，但最终留下的只有两三个。
+        留下来的理由往往很简单：加载够快、信息清楚、没有奇怪的弹窗。而<a href="https://xinpujingaomen.com" style="color: #6b5f44; text-decoration: none; border-bottom: 1px solid #cbbca3;">澳门新葡京</a>恰好符合这些直觉。
+        不需要刻意记忆，想再去看看的时候，地址就在那里。
+      </p>
+
+      <div class="bookmark-note">
+        <p class="visit-hint">
+          📎 再次收藏 · <a href="https://xinpujingaomen.com">澳门新葡京</a>
+        </p>
+        <p style="font-size: 0.95rem; color: #4d4637;">
+          把链接放回常用书签，或者保持标签页固定。偶尔路过，也算一种持续的关注。
+        </p>
+        <span class="meta-sub">—— 整理于 2025 · 轻访问笔记</span>
+      </div>
+
+      <div class="feature-grid">
+        <span class="feature-item">浏览流畅</span>
+        <span class="feature-item">信息直观</span>
+        <span class="feature-item">风格延续</span>
+        <span class="feature-item">无冗余干扰</span>
+      </div>
+
+      <p>
+        有时候，持续关注一个站点并不需要每天刷新，而是隔几周或一个月点开一次，看看结构有没有微调、内容有没有新变化。
+        对我而言，<a href="https://xinpujingaomen.com" style="color: #6b5f44; text-decoration: none; border-bottom: 1px solid #cbbca3;">澳门新葡京</a>就是那种每次点开都不会失望的页面。
+        没有突兀的改版，也没有突然消失的栏目，像是默默守着某种节奏。
+      </p>
+
+      <div class="separator-quote">
+        <span>· 收藏即是一种轻承诺 ·</span>
+      </div>
+
+      <p>
+        最后想说的是，如果你也习惯把重要的站点收在书签栏里，不妨给<a href="https://xinpujingaomen.com" style="color: #6b5f44; text-decoration: none; border-bottom: 1px solid #cbbca3;">澳门新葡京</a>留一个位置。
+        不需要刻意安排时间，下次浏览器的书签菜单弹出时，自然就会看到它。
+        再次访问不需要理由，也许只是路过，但收藏本身就是一种态度。
+      </p>
+    </div>
+
+    <div class="post-footer">
+      <span class="footer-note">持续关注 · 轻访问</span>
+      <span class="footer-note"><a href="https://xinpujingaomen.com">澳门新葡京</a> · 保持收藏</span>
+    </div>
+  </article>
+</div>
+</body>
+</html>

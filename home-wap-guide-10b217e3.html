@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>再访 · 世界杯记录</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f2f8f9;
+            color: #1f2b2e;
+            line-height: 1.7;
+            padding: 0 1rem;
+        }
+
+        .page {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 2.5rem 0 3rem;
+        }
+
+        /* 网格卡片背景点缀 —— 移动端友好，营造简洁博客感 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+            margin: 1.5rem 0 2rem;
+            pointer-events: none;
+            opacity: 0.3;
+        }
+
+        .card-grid span {
+            background: #cfe8ed;
+            border-radius: 24px;
+            height: 60px;
+            display: block;
+            box-shadow: 0 2px 6px rgba(0, 50, 60, 0.04);
+        }
+
+        .card-grid span:nth-child(odd) {
+            background: #b8dfe6;
+            height: 50px;
+        }
+
+        /* 文章区域的卡片风格 */
+        .blog-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            border-radius: 28px;
+            padding: 1.8rem 1.6rem;
+            margin: 2rem 0;
+            box-shadow: 0 8px 24px rgba(26, 68, 78, 0.05);
+            border: 1px solid rgba(130, 190, 200, 0.15);
+        }
+
+        h1 {
+            font-size: 1.9rem;
+            font-weight: 520;
+            letter-spacing: -0.01em;
+            color: #0e3b44;
+            margin: 0 0 0.4rem 0;
+            line-height: 1.2;
+        }
+
+        .subhead {
+            font-size: 1rem;
+            color: #3d6a75;
+            border-left: 4px solid #51a5b5;
+            padding-left: 1rem;
+            margin: 0.2rem 0 1.2rem 0;
+            font-weight: 380;
+        }
+
+        .byline {
+            font-size: 0.85rem;
+            color: #5d7e86;
+            margin-bottom: 1.8rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            border-bottom: 1px dashed #b7d5db;
+            padding-bottom: 0.5rem;
+        }
+
+        p {
+            margin: 1.2rem 0;
+            text-align: justify;
+            word-break: break-word;
+        }
+
+        .inset-quote {
+            background: #e3f2f5;
+            border-radius: 24px;
+            padding: 1.2rem 1.5rem;
+            margin: 1.8rem 0;
+            font-style: normal;
+            border-left: 6px solid #2b889a;
+            color: #1a4f5a;
+            font-weight: 380;
+            box-shadow: 0 2px 8px rgba(38, 120, 138, 0.05);
+        }
+
+        .inset-quote::before {
+            content: "💬 ";
+            font-size: 1.2rem;
+            opacity: 0.75;
+        }
+
+        .highlight-link {
+            color: #127383;
+            text-decoration: none;
+            font-weight: 450;
+            border-bottom: 2px solid #79c1ce;
+            padding-bottom: 0.1rem;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        .highlight-link:hover {
+            border-bottom-color: #0b4f5c;
+            background: #d7eef3;
+        }
+
+        .action-note {
+            background: #dceef3;
+            border-radius: 40px;
+            padding: 1.2rem 1.6rem;
+            margin: 2.2rem 0 1.8rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.6rem 1rem;
+            border: 1px solid #a7ced9;
+        }
+
+        .action-note span {
+            font-size: 1.2rem;
+            background: #3e8899;
+            color: white;
+            padding: 0.2rem 0.9rem;
+            border-radius: 50px;
+            font-weight: 450;
+        }
+
+        .action-note em {
+            font-style: normal;
+            color: #0f4855;
+        }
+
+        .faq-mini {
+            margin: 2rem 0 0.8rem;
+            border-top: 1px solid #c3dce3;
+            padding-top: 1.8rem;
+        }
+
+        .faq-mini details {
+            margin: 0.8rem 0;
+            padding: 0.6rem 0.8rem;
+            background: #f6fcfd;
+            border-radius: 30px;
+            border: 1px solid #c8e1e7;
+        }
+
+        .faq-mini details summary {
+            font-weight: 450;
+            color: #185a68;
+            cursor: pointer;
+            padding: 0.2rem 0;
+            list-style: none;
+        }
+
+        .faq-mini details summary::marker {
+            color: #2b8b9e;
+        }
+
+        .faq-mini details p {
+            margin: 0.8rem 0 0.2rem;
+            font-size: 0.95rem;
+            color: #254d56;
+        }
+
+        .foot-note {
+            margin-top: 2.8rem;
+            font-size: 0.8rem;
+            color: #4c727c;
+            text-align: center;
+            border-top: 1px solid #cde2e8;
+            padding-top: 1.5rem;
+        }
+
+        /* 响应式细节 */
+        @media (max-width: 480px) {
+            .page { padding: 1.5rem 0 2rem; }
+            h1 { font-size: 1.6rem; }
+            .blog-card { padding: 1.4rem 1.1rem; }
+            .card-grid span { height: 45px; }
+            .action-note { flex-direction: column; align-items: flex-start; }
+        }
+
+        @media (min-width: 600px) {
+            .card-grid { grid-template-columns: 1fr 1fr 1fr; gap: 0.8rem; }
+            .card-grid span { height: 70px; }
+            .card-grid span:nth-child(odd) { height: 55px; }
+        }
+
+        /* 模拟网格装饰，不遮挡内容 */
+        .bg-deco {
+            position: relative;
+        }
+
+        /* 所有链接保留 a 标签原始下划线样式，但以 highlight-link 覆盖 */
+        a {
+            color: #127383;
+        }
+    </style>
+</head>
+<body>
+<div class="page bg-deco">
+
+    <!-- 标题区：简洁博客风格 -->
+    <h1>再一次，回到世界杯</h1>
+    <div class="subhead">收藏 · 重访 · 持续在场</div>
+    <div class="byline">
+        <span>写在小组赛抽签之前</span>
+        <span>阅读约 4 分钟</span>
+    </div>
+
+    <!-- 装饰网格卡片 —— 无声的节奏感 -->
+    <div class="card-grid">
+        <span></span><span></span><span></span>
+        <span></span><span></span><span></span>
+    </div>
+
+    <!-- 博客正文卡片区 -->
+    <div class="blog-card">
+        <p>
+            有些页面值得反复打开，不是因为界面花哨，而是因为它藏着一个熟悉的起点。对许多人来说，
+            <a href="https://home-wap-fifa2026.com" class="highlight-link">世界杯</a>
+            就是这样一个入口——它不催促你，只是安静地待在那里，等某天你再次点开，发现赛程、球队、分组和记忆都还在更新。
+        </p>
+
+        <p>
+            上一次访问可能是四年前，或者更早。那时候你记住了某个进球，某个夜晚，某个进球后的庆祝动作。而现在，当你重新在地址栏输入那串字母，页面载入的一瞬间，那种“我又回来了”的感觉，或许比看一场集锦更踏实。收藏夹里的链接不会过期，只要它还在，2026 的轮廓就一天天清晰起来。
+        </p>
+
+        <div class="inset-quote">
+            收藏一个网址，有时候像是给未来的自己留一个座位。不必每天都去，但你知道它在那里。
+        </div>
+
+        <p>
+            也正是因为这样，我习惯把一些站点留在手机桌面的第二屏，不常打开，但每次顺手点进去，都会发现一些之前忽略的细节——比如赛历微调、主办城市的宣传片更新、或者仅仅是页脚多了一行倒计时。它们不喧哗，却让等待变得具体。
+        </p>
+
+        <p>
+            如果你也是那种“先收藏，等有空再看”的人，不妨现在就把
+            <a href="https://home-wap-fifa2026.com" class="highlight-link">世界杯</a>
+            加到书签栏。不需要立刻看完所有内容，只要让那个链接待在某个角落，下次想起时，少一次搜索，多一份笃定。
+        </p>
+    </div>
+
+    <!-- 提示 / 行动语句（非诱导，自然叙述） -->
+    <div class="action-note">
+        <span>📌</span>
+        <em>持续关注的方式很简单：</em>
+        把首页添加到主屏幕，或定期回来看一眼。页面本身不推送，但变化都在那里。
+    </div>
+
+    <!-- 摘要式 FAQ —— 简洁克制，提供一点补充信息 -->
+    <div class="faq-mini">
+        <details>
+            <summary>‣ 这个页面和之前访问的有什么不同？</summary>
+            <p>结构保持了一贯的简洁，内容重心从导航转向了信息本身。每次打开，你看到的依然是关于<a href="https://home-wap-fifa2026.com" class="highlight-link">世界杯</a>的核心信息，但布局和节奏会随着时间微调。</p>
+        </details>
+        <details>
+            <summary>‣ 为什么值得再次访问？</summary>
+            <p>赛程排布、球队动态、主办城市更新——这些内容会陆续补充，但不会铺满整个页面。它更像一份安静的记录，供你按自己的节奏查看。</p>
+        </details>
+        <details>
+            <summary>‣ 收藏后需要注意什么？</summary>
+            <p>建议定期清除浏览器缓存后重新加载一次，确保看到最新样式。链接不会变，但背后的内容会逐渐丰富。</p>
+        </details>
+    </div>
+
+    <!-- 结尾句 —— 自然叙述，带点温度 -->
+    <div class="foot-note">
+        <span>📎 写于一个普通的工作日晚上 · 页面设计偏蓝绿，适合长时间阅读</span><br>
+        <span style="opacity:0.5;">— 下次点开时，也许倒计时又少了一天 —</span>
+    </div>
+
+</div>
+</body>
+</html>

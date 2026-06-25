@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home-portal-fifa2026 · 站点介绍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #fbfbfa;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: #1e2a32;
+            line-height: 1.65;
+            padding: 2rem 1.25rem;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        /* 导航头 */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0 1.75rem;
+            border-bottom: 1px solid #e7e9ec;
+            margin-bottom: 3rem;
+        }
+
+        .site-title {
+            font-weight: 500;
+            font-size: 1.1rem;
+            letter-spacing: 0.3px;
+            color: #2d3e4f;
+        }
+
+        .site-title span {
+            color: #b2865b;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4a5a6a;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #b2865b;
+        }
+
+        /* hero 简约模块 */
+        .hero {
+            margin-bottom: 3.5rem;
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            font-weight: 450;
+            letter-spacing: -0.3px;
+            margin-bottom: 0.5rem;
+            color: #1e2a32;
+        }
+
+        .hero-sub {
+            font-size: 1rem;
+            color: #5d6f7e;
+            max-width: 580px;
+            margin-bottom: 0.25rem;
+        }
+
+        .hero p {
+            font-size: 0.95rem;
+            color: #3e4f5e;
+        }
+
+        .hero a {
+            color: #b2865b;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 0.5px;
+        }
+
+        /* 场景卡片三列 (窄屏单列) */
+        .scenes {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.8rem;
+            margin: 3rem 0 3.2rem;
+        }
+
+        .scene-card {
+            background: #ffffff;
+            border: 1px solid #ebeef0;
+            border-radius: 12px;
+            padding: 1.6rem 1.2rem 1.4rem;
+            transition: box-shadow 0.2s;
+        }
+
+        .scene-card:hover {
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.02);
+        }
+
+        .scene-card h3 {
+            font-size: 1rem;
+            font-weight: 550;
+            margin-bottom: 0.6rem;
+            color: #25343d;
+            letter-spacing: 0.2px;
+        }
+
+        .scene-card h3 small {
+            font-weight: 400;
+            font-size: 0.85rem;
+            color: #a3b1bd;
+            margin-left: 0.2rem;
+        }
+
+        .scene-card p {
+            font-size: 0.88rem;
+            color: #4b5d6b;
+            margin-bottom: 0.4rem;
+            line-height: 1.55;
+        }
+
+        .scene-card .tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            color: #7a8c9b;
+            border: 1px solid #dde2e7;
+            border-radius: 20px;
+            padding: 0.1rem 0.6rem;
+            margin-top: 0.3rem;
+        }
+
+        /* 常见说明区域 */
+        .faq-summary {
+            margin: 2.8rem 0 2.5rem;
+        }
+
+        .faq-summary h2 {
+            font-size: 1.15rem;
+            font-weight: 520;
+            margin-bottom: 1.2rem;
+            color: #27343e;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #eceff2;
+            padding: 0.9rem 0;
+        }
+
+        .faq-item:first-of-type {
+            border-top: 1px solid #eceff2;
+        }
+
+        .faq-q {
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: #1e2a32;
+            margin-bottom: 0.2rem;
+        }
+
+        .faq-a {
+            font-size: 0.88rem;
+            color: #546776;
+            line-height: 1.55;
+        }
+
+        .faq-a a {
+            color: #b2865b;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        /* 底部 */
+        .footer-note {
+            margin-top: 2.8rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid #e7e9ec;
+            font-size: 0.8rem;
+            color: #7f8f9d;
+            text-align: center;
+        }
+
+        .footer-note a {
+            color: #8d9dab;
+            text-decoration: none;
+            border-bottom: 1px dotted #d0d6dc;
+        }
+
+        /* 响应式 */
+        @media (max-width: 700px) {
+            body {
+                padding: 1.5rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+
+            .scenes {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.85rem;
+            }
+
+            .site-title {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 450px) {
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.6rem;
+                padding-bottom: 1rem;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                gap: 0.8rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- 顶部导航 -->
+    <nav>
+        <div class="site-title"><span>●</span> portal·2026</div>
+        <div class="nav-links">
+            <a href="#intro">介绍</a>
+            <a href="#scenes">场景</a>
+            <a href="#faq">说明</a>
+        </div>
+    </nav>
+
+    <!-- 核心介绍 -->
+    <div class="hero" id="intro">
+        <h1>关于 home‑portal‑fifa2026</h1>
+        <div class="hero-sub">
+            一个围绕 <a href="https://home-portal-fifa2026.com">世界杯</a> 赛事信息组织起来的轻量导航站点。
+        </div>
+        <p>
+            提供简洁、可信的索引与背景说明，帮助浏览者快速了解与世界杯相关的公开信息结构。
+            本站不收集个人信息，不嵌入第三方追踪，内容仅作展示与导航用途。
+        </p>
+    </div>
+
+    <!-- 三个场景模块 -->
+    <div class="scenes" id="scenes">
+        <div class="scene-card">
+            <h3>赛事背景 <small>· 概要</small></h3>
+            <p>2026年世界杯将由美国、加拿大、墨西哥联合举办，共计48支球队参赛。</p>
+            <p>本站整理并索引了赛程、场馆等公开资料，便于快速参考。</p>
+            <span class="tag">48 支队伍</span>
+        </div>
+        <div class="scene-card">
+            <h3>信息导航 <small>· 结构</small></h3>
+            <p>页面聚合了官方及权威媒体发布的世界杯相关内容，按赛区、阶段、球队分类陈列。</p>
+            <p>所有外链均标注来源，保持信息透明度。</p>
+            <span class="tag">分类索引</span>
+        </div>
+        <div class="scene-card">
+            <h3>站点定位 <small>· 说明</small></h3>
+            <p>home‑portal‑fifa2026 是一个非官方信息门户，不提供实时比分、博彩或直播服务。</p>
+            <p>内容基于公开资料整理，更新时间与世界杯组委会披露同步。</p>
+            <span class="tag">非官方</span>
+        </div>
+    </div>
+
+    <!-- 常见说明 (FAQ摘要) -->
+    <div class="faq-summary" id="faq">
+        <h2>常见说明</h2>
+
+        <div class="faq-item">
+            <div class="faq-q">这个站点由谁维护？</div>
+            <div class="faq-a">
+                由一位对足球赛事信息感兴趣的开发者维护，与 FIFA 或任何足球联合会无关。所有引用均注明来源，<a href="https://home-portal-fifa2026.com">世界杯</a>相关内容仅作信息整合。
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">信息更新频率？</div>
+            <div class="faq-a">
+                预计在2026世界杯筹备阶段（2024‑2026）按季度更新，赛前一个月转为每月更新。重要场馆或赛程变动会及时调整。
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">为什么选择这个平台？</div>
+            <div class="faq-a">
+                页面使用纯静态 HTML，加载快、无冗余脚本。浏览者可通过一个集中的入口快速查阅与 <a href="https://home-portal-fifa2026.com">世界杯</a> 相关的背景、场馆、历史数据等公开信息。
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">是否有移动端适配？</div>
+            <div class="faq-a">
+                全面响应式设计，手机与平板均可正常浏览。窄屏下卡片与导航自动调整为单列布局，阅读体验不受影响。
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部 -->
+    <div class="footer-note">
+        <a href="https://home-portal-fifa2026.com">世界杯</a> · 本站内容基于公开资料整理 · 非 FIFA 官方站点
+    </div>
+</div>
+</body>
+</html>

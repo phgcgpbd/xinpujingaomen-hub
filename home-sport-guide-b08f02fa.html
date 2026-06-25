@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>简明指南 · 世界杯访问提醒</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f7f6f3;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #1e1e1e;
+      line-height: 1.7;
+      padding: 2.5rem 1.25rem;
+    }
+
+    .page-wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 36px;
+      padding: 3.2rem 2.4rem;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.02), 0 2px 6px rgba(0,0,0,0.02);
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.3rem;
+      color: #1b1b1b;
+      line-height: 1.2;
+    }
+
+    .subhead {
+      font-size: 1.1rem;
+      color: #5f5f5f;
+      margin-bottom: 2.6rem;
+      border-bottom: 1px solid #eaeaea;
+      padding-bottom: 1.2rem;
+    }
+
+    .hero-note {
+      background: #f0efe9;
+      padding: 1.6rem 1.8rem;
+      border-radius: 20px;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-note p {
+      font-size: 1.05rem;
+      color: #2c2c2c;
+    }
+
+    .hero-note strong {
+      font-weight: 500;
+    }
+
+    .card-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+      margin: 2.8rem 0 2.4rem;
+    }
+
+    .card {
+      background: #fafaf8;
+      border-radius: 24px;
+      padding: 1.8rem 1.8rem 2rem;
+      transition: background 0.15s;
+    }
+
+    .card h2 {
+      font-size: 1.3rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.8rem;
+      color: #242424;
+    }
+
+    .card p {
+      font-size: 1rem;
+      color: #3f3f3f;
+      margin-bottom: 0.4rem;
+    }
+
+    .card .meta-tag {
+      display: inline-block;
+      background: #e1e1db;
+      font-size: 0.75rem;
+      padding: 0.2rem 0.8rem;
+      border-radius: 40px;
+      color: #3f3f3f;
+      margin-right: 0.4rem;
+      margin-top: 0.6rem;
+    }
+
+    .audience-row {
+      margin: 2rem 0 3.2rem;
+      padding: 1.4rem 1.8rem;
+      background: #ffffff;
+      border: 1px solid #e6e4dd;
+      border-radius: 24px;
+    }
+
+    .audience-row h3 {
+      font-weight: 500;
+      font-size: 1.1rem;
+      margin-bottom: 0.9rem;
+      color: #2c2c2c;
+    }
+
+    .audience-row ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem 1rem;
+    }
+
+    .audience-row li {
+      background: #f0ede6;
+      padding: 0.25rem 1rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      color: #2c2c2c;
+    }
+
+    .reminder-box {
+      background: #f6f4ee;
+      border-radius: 20px;
+      padding: 1.5rem 1.8rem;
+      margin-top: 1.8rem;
+      margin-bottom: 2.2rem;
+    }
+
+    .reminder-box h3 {
+      font-weight: 500;
+      font-size: 1.1rem;
+      margin-bottom: 0.6rem;
+      color: #1e1e1e;
+    }
+
+    .reminder-box p, .faq-item p {
+      font-size: 0.98rem;
+      color: #3b3b3b;
+    }
+
+    .faq-mini {
+      margin: 2.2rem 0 1.8rem;
+      border-top: 1px solid #eaeaea;
+      padding-top: 2rem;
+    }
+
+    .faq-item {
+      margin-bottom: 1.4rem;
+    }
+
+    .faq-item strong {
+      font-weight: 500;
+      color: #1b1b1b;
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    .link-sentence {
+      background: #f9f8f5;
+      border-radius: 18px;
+      padding: 1.2rem 1.6rem;
+      margin: 2.2rem 0 0.4rem;
+      font-size: 1.05rem;
+      color: #2b2b2b;
+    }
+
+    a {
+      color: #2266aa;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
+      text-decoration-color: #b6c9df;
+      transition: color 0.2s, text-decoration-color 0.2s;
+    }
+
+    a:hover {
+      color: #1a4c7a;
+      text-decoration-color: #1a4c7a;
+    }
+
+    .footer-note {
+      font-size: 0.85rem;
+      color: #8f8f8f;
+      margin-top: 2.8rem;
+      border-top: 1px solid #eaeaea;
+      padding-top: 1.4rem;
+      text-align: left;
+    }
+
+    @media (max-width: 520px) {
+      body {
+        padding: 1.2rem 0.75rem;
+      }
+      .page-wrap {
+        padding: 1.8rem 1.2rem;
+        border-radius: 28px;
+      }
+      h1 {
+        font-size: 1.9rem;
+      }
+      .card {
+        padding: 1.4rem;
+      }
+      .audience-row ul {
+        gap: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+  <h1>世界杯 · 简明访问指南</h1>
+  <div class="subhead">找到需要的页面，不被广告绕路</div>
+
+  <!-- 主视觉 / 提醒 -->
+  <div class="hero-note">
+    <p><strong>很多朋友在搜索“世界杯”时，总会点进几个重复的首页。</strong> 如果你只是想快速了解本届赛事信息、赛程或官方动态，下面这些卡片可以帮你节省时间。没有横幅，没有弹窗，只有指向明确的内容。</p>
+  </div>
+
+  <!-- 信息卡片区：用途卡片 -->
+  <div class="card-grid">
+    <div class="card">
+      <h2>🏟️ 赛程与场馆速览</h2>
+      <p>比赛时间、举办城市、球场容量 —— 这些基础信息往往藏在多层菜单后。你可以在主站首页找到简洁的时间线概览。</p>
+      <span class="meta-tag">小组赛</span>
+      <span class="meta-tag">淘汰赛</span>
+    </div>
+
+    <div class="card">
+      <h2>📋 观赛准备清单</h2>
+      <p>无论是线上关注还是现场观赛，提前了解票务阶段、转播平台、签证要求（如适用）都能省去很多麻烦。官方页面通常会列出公告区域。</p>
+      <span class="meta-tag">票务提醒</span>
+      <span class="meta-tag">转播</span>
+    </div>
+
+    <div class="card">
+      <h2>🌐 语言与区域版本</h2>
+      <p>不同地区的球迷看到的首页可能略有差异。如果你想把语言切换为中文，或查找当地专属内容，建议从根域名开始探索。</p>
+      <span class="meta-tag">语言选择</span>
+    </div>
+  </div>
+
+  <!-- 适合人群 -->
+  <div class="audience-row">
+    <h3>这些内容尤其适合</h3>
+    <ul>
+      <li>第一次关注世界杯的观众</li>
+      <li>想快速核对赛程的老球迷</li>
+      <li>帮家人查找信息的帮手</li>
+      <li>需要引用官方来源的编辑</li>
+    </ul>
+  </div>
+
+  <!-- 自然链接段落 (唯一 a 标签) -->
+  <div class="link-sentence">
+    <p>如果你想直接进入最核心的赛事首页，试试看这个链接：<a href="https://home-sport-fifa2026.com">世界杯</a>。页面内容会持续更新，建议把它加入书签方便之后回看。</p>
+  </div>
+
+  <!-- 提醒 + FAQ 摘要 -->
+  <div class="reminder-box">
+    <h3>🔔 访问提醒</h3>
+    <p>部分国家或地区可能遇到页面加载速度波动，或需要轻量级内容。如果首页打开较慢，可以稍后刷新，或检查网络环境。赛事期间流量高峰属于正常现象。</p>
+  </div>
+
+  <div class="faq-mini">
+    <div class="faq-item">
+      <strong>❓ 首页上的信息是最新的吗？</strong>
+      <p>官方首页通常会在关键节点（抽签、开赛前、淘汰赛阶段）更新视觉和公告。日常变动以赛程、新闻模块为主。</p>
+    </div>
+    <div class="faq-item">
+      <strong>❓ 我需要注册才能浏览吗？</strong>
+      <p>浏览首页和大部分公开信息不需要注册。部分互动功能（如票务申请、新闻订阅）才需要账户。</p>
+    </div>
+    <div class="faq-item">
+      <strong>❓ 移动端和桌面端体验一样吗？</strong>
+      <p>页面采用响应式设计，但在窄屏下部分元素会折叠。建议在手机上横屏查看赛程表格。</p>
+    </div>
+  </div>
+
+  <!-- 页脚 -->
+  <div class="footer-note">
+    这是一个非官方简洁指引页 · 信息基于公开资料整理 · 请以实际页面为准
+  </div>
+</div>
+</body>
+</html>

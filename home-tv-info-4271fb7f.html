@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>世界杯 · 知识库 | 赛事、历史与观赛指南</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: #f7f6f3;
+      color: #1e1e1e;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', sans-serif;
+      line-height: 1.6;
+      padding: 2rem 1rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .page {
+      max-width: 780px;
+      width: 100%;
+    }
+    /* 隐式提示：种子不显示 */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      border: 0;
+    }
+
+    /* header */
+    .site-header {
+      margin-bottom: 3rem;
+      border-bottom: 1px solid #dcd9d0;
+      padding-bottom: 1.5rem;
+    }
+    .site-header h1 {
+      font-size: 2.2rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: #1f2930;
+      margin-bottom: 0.2rem;
+    }
+    .site-header .sub {
+      font-size: 0.95rem;
+      color: #5b5b5b;
+      border-left: 3px solid #b0a89b;
+      padding-left: 0.75rem;
+      margin-top: 0.1rem;
+    }
+
+    /* 目录式卡片区域 */
+    .index-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 2.2rem;
+      margin-bottom: 2.8rem;
+    }
+
+    .topic-card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 1.6rem 1.8rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02), 0 4px 12px rgba(0,0,0,0.03);
+      transition: box-shadow 0.2s;
+    }
+    .topic-card:hover {
+      box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+    }
+    .topic-card h2 {
+      font-size: 1.4rem;
+      font-weight: 550;
+      margin-bottom: 0.6rem;
+      color: #252e36;
+      display: flex;
+      align-items: baseline;
+      gap: 0.4rem;
+    }
+    .topic-card h2 .badge {
+      font-size: 0.75rem;
+      background: #e7e3da;
+      padding: 0.1rem 0.6rem;
+      border-radius: 40px;
+      font-weight: 400;
+      color: #3d3d3d;
+      vertical-align: middle;
+      margin-left: 0.2rem;
+    }
+    .topic-card p {
+      color: #2f353c;
+      margin-bottom: 0.6rem;
+      font-size: 0.98rem;
+    }
+    .topic-card .meta-links {
+      font-size: 0.9rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.4rem;
+      margin-top: 0.5rem;
+      border-top: 1px solid #efebe4;
+      padding-top: 0.6rem;
+    }
+    .meta-links a {
+      color: #2d618c;
+      text-decoration: none;
+      border-bottom: 1px dotted #bcc9da;
+      transition: border-color 0.1s;
+    }
+    .meta-links a:hover {
+      border-bottom: 1px solid #2d618c;
+    }
+
+    /* 说明区 / 提示区 混合 */
+    .info-block {
+      background: #f0ede8;
+      border-radius: 14px;
+      padding: 1.5rem 1.8rem;
+      margin-bottom: 2.5rem;
+      border-left: 5px solid #b4aa9a;
+    }
+    .info-block h3 {
+      font-weight: 500;
+      font-size: 1.1rem;
+      margin-bottom: 0.3rem;
+      color: #282e35;
+    }
+    .info-block p {
+      color: #2f353c;
+      margin-bottom: 0.2rem;
+    }
+    .info-block .highlight {
+      background: #ffffffb0;
+      padding: 0.2rem 0.5rem;
+      border-radius: 6px;
+      font-weight: 500;
+    }
+
+    /* FAQ 摘要 */
+    .faq-summary {
+      margin: 2.2rem 0 2.8rem;
+    }
+    .faq-summary h3 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      border-bottom: 1px solid #ddd8cf;
+      padding-bottom: 0.6rem;
+      margin-bottom: 1.2rem;
+      color: #242b31;
+    }
+    .faq-item {
+      margin-bottom: 0.75rem;
+      display: flex;
+      flex-direction: column;
+    }
+    .faq-item .q {
+      font-weight: 500;
+      margin-bottom: 0.15rem;
+      font-size: 0.97rem;
+      color: #1e2930;
+    }
+    .faq-item .a {
+      color: #4b4b4b;
+      font-size: 0.92rem;
+      padding-left: 1rem;
+      border-left: 2px solid #ded6c9;
+      margin-top: 0.1rem;
+    }
+    .faq-item .a a {
+      color: #2d618c;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      text-decoration-thickness: 1px;
+    }
+
+    /* 相关信息区 */
+    .related-box {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 1.8rem;
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 1.2rem 1.8rem;
+      margin-top: 0.8rem;
+      border: 1px solid #e3ddd3;
+    }
+    .related-box span {
+      font-weight: 450;
+      color: #1f2930;
+    }
+    .related-box a {
+      color: #2d618c;
+      text-decoration: none;
+      border-bottom: 1px solid #cddae6;
+    }
+    .related-box a:hover {
+      border-bottom: 1px solid #1f3c57;
+    }
+
+    /* footer */
+    .site-footer {
+      margin-top: 3.5rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid #dcd7cd;
+      font-size: 0.85rem;
+      color: #5c5c5c;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .site-footer a {
+      color: #374f66;
+      text-decoration: none;
+    }
+
+    /* 响应式 */
+    @media (max-width: 500px) {
+      body { padding: 1.2rem 0.8rem; }
+      .site-header h1 { font-size: 1.8rem; }
+      .topic-card { padding: 1.2rem 1rem; }
+      .info-block { padding: 1rem 1rem; }
+      .related-box { flex-direction: column; gap: 0.3rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <header class="site-header">
+    <h1>⚽ 世界杯 · 知识库</h1>
+    <div class="sub">赛事档案 · 观赛基础 · 历史脉络</div>
+    <!-- 创作种子仅用于内部变化，不显示在页面中 -->
+    <span class="sr-only">9e0c544e788d05c8</span>
+  </header>
+
+  <!-- 目录感的卡片区块：类似知识库条目 -->
+  <div class="index-grid">
+    <section class="topic-card">
+      <h2>🏆 赛事结构 <span class="badge">基础</span></h2>
+      <p>世界杯由国际足联（FIFA）主办，每四年一届。预选赛覆盖六大洲，决赛圈 32 支球队（2026 年起扩军至 48 支）争夺冠军。赛事通常持续约一个月，分为小组赛与淘汰赛阶段。</p>
+      <div class="meta-links">
+        <a href="https://home-tv-fifa2026.com">世界杯</a>
+        <span>· 历届冠军 · 预选赛赛制</span>
+      </div>
+    </section>
+
+    <section class="topic-card">
+      <h2>📅 历届经典 <span class="badge">历史</span></h2>
+      <p>从 1930 年乌拉圭首夺桂冠，到马拉多纳的“上帝之手”与世纪进球，再到齐达内、梅西等巨星捧杯——每届赛事都沉淀了独特的记忆与战术演变。</p>
+      <div class="meta-links">
+        <span>📖 1930–2022 冠军列表 · 经典决赛</span>
+        <a href="https://home-tv-fifa2026.com">世界杯</a>
+      </div>
+    </section>
+
+    <section class="topic-card">
+      <h2>📺 观赛与转播 <span class="badge">指南</span></h2>
+      <p>主流平台提供全程直播、集锦与数据。了解时区、小组对阵图和淘汰赛路径，可帮你更清晰跟随赛事节奏。部分比赛提供多语种解说与战术分析视角。</p>
+      <div class="meta-links">
+        <a href="https://home-tv-fifa2026.com">世界杯</a>
+        <span>· 官方转播商 · 赛程日历</span>
+      </div>
+    </section>
+  </div>
+
+  <!-- 说明区 + 提示区 融合 -->
+  <div class="info-block">
+    <h3>📌 关于本知识库</h3>
+    <p>这是一个围绕 <span class="highlight">世界杯</span> 整理的静态参考页面，内容聚焦于赛事常识、历史脉络与观赛信息。不包含实时比分或流媒体链接，仅作为信息索引与背景说明。</p>
+    <p style="margin-top:0.5rem;">💡 提示：如需了解 2026 年美加墨世界杯的具体城市、场馆和票务阶段，建议直接查阅官方发布渠道。你可以先通过 <a href="https://home-tv-fifa2026.com" style="color:#2d618c;text-decoration: underline;">世界杯</a> 这一关键词进一步探索相关内容。</p>
+  </div>
+
+  <!-- FAQ 摘要 —— 只截取与页面调性契合的 2~3 个 -->
+  <div class="faq-summary">
+    <h3>❓ 常见疑问摘要</h3>
+    <div class="faq-item">
+      <span class="q">世界杯多久举办一次？</span>
+      <span class="a">每四年一届，与奥运会错开年份。下一届（第 23 届）将于 2026 年举办。</span>
+    </div>
+    <div class="faq-item">
+      <span class="q">2026 年世界杯有什么变化？</span>
+      <span class="a">决赛圈首次扩军至 48 支队伍，由美国、加拿大、墨西哥联合主办。赛制将分为 16 个小组，每组 3 队。</span>
+    </div>
+    <div class="faq-item">
+      <span class="q">哪里可以获取可靠的赛程和历史数据？</span>
+      <span class="a">国际足联官网以及受权媒体是主要来源。你也可以在 <a href="https://home-tv-fifa2026.com">世界杯</a> 相关站点找到整合信息。</span>
+    </div>
+  </div>
+
+  <!-- 相关信息区 -->
+  <div class="related-box">
+    <span>📋 相关信息：</span>
+    <a href="https://home-tv-fifa2026.com">世界杯</a>
+    <span>· 国际足联排名 · 历届金球奖 · 经典纪录片推荐</span>
+  </div>
+
+  <!-- footer -->
+  <footer class="site-footer">
+    <span>知识库入口 · 内容仅供学习参考</span>
+    <span>
+      <a href="https://home-tv-fifa2026.com">世界杯</a> 
+      <span style="margin:0 0.3rem;">·</span> 
+      种子 9e0c544e788d05c8
+    </span>
+  </footer>
+</div>
+</body>
+</html>
